@@ -8,6 +8,7 @@ replicas:                            # 服务副本数
 # 如服务有依赖其他多个服务，则需要增加多个containers下的服务配置块
 containers:
   - name:                            # 容器名称
+    args:                            # 容器内代码运行所需参数
     image:                           # 镜像id
     volumeMounts:                    # 挂载
       - mountPath:                   # 挂载路径
