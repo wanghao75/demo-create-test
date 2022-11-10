@@ -1,8 +1,8 @@
 domain:                              # 域名配置，如存在多个域名则填写多个
   -                                  # 服务域名
   -                                  # 服务域名
-project:                             # 服务名
-namespace:                           # 服务所处的命名空间,与project保持一致
+project:                             # 项目名
+namespace:                           # 服务命名空间,与project保持一致
 replicas:                            # 服务副本数
 
 # 如服务有依赖其他多个服务，则需要增加多个containers下的服务配置块
