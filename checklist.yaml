@@ -1,9 +1,11 @@
 domain:                              # 域名配置，如存在多个域名则填写多个
-  -                                  # 服务域名
-  -                                  # 服务域名
+                                     # 服务域名
+                                     # 服务域名
 project:                             # 项目名
 namespace:                           # 服务命名空间,与project保持一致
 replicas:                            # 服务副本数
+needIngress:                         # 是否需要对外暴露服务 bool值（默认为False, 不填写也认为是False）
+ingress-controller:                  # 如需要对外暴露服务，则填写此字段，如不需要则去除
 
 # 如服务有依赖其他多个服务，则需要增加多个containers下的服务配置块
 containers:
@@ -63,3 +65,6 @@ volumes:
 - name:                              # 挂载名称
   secret:
     secretName:                      # 映射卷名
+
+storage:                             # 挂载的数据盘大小 (只针对需要物理存储的数据盘时设置)
+storageClassName:                    # 挂载数据盘类型
