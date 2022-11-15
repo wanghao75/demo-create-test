@@ -6,6 +6,7 @@ namespace:                           # 服务命名空间,与project保持一致
 replicas:                            # 服务副本数
 needIngress:                         # 是否需要对外暴露服务 bool值（默认为False, 不填写也认为是False）
 ingress-controller:                  # 如需要对外暴露服务，则填写此字段，如不需要则去除
+community:                           # 服务归属的社区，如openeuler，mindspore，openlookeng，opengauss
 
 # 如服务有依赖其他多个服务，则需要增加多个containers下的服务配置块
 containers:
@@ -26,10 +27,6 @@ containers:
         cpu:
         memory:
     env:                             # 环境变量
-      # 第一种，value字段存在
-      - name:                        # 环境变量名
-        value:                       # 环境变量值
-      # 第二种， value字段不存在
       - name:                        # 变量名
         valueFrom:
           secretKeyRef:
@@ -60,11 +57,11 @@ containers:
 volumes:
 - name:                              # 挂载名称
   persistentVolumeClaim:             # 物理存储，使用此字段则表明使用数据盘进行挂载
-    claimName:                       # 声明的物理存储盘名称
+    claimName:                       # 声明的物理存储盘名称,建议使用project+“-data-volume”的格式命名，如 robot-gitee-data-volume
 
 - name:                              # 挂载名称
   secret:
-    secretName:                      # 映射卷名
+    secretName:                      # 隐秘文件名，建议使用project+“-secret”的格式命名，如 website-secret
 
 storage:                             # 挂载的数据盘大小 (只针对需要物理存储的数据盘时设置)
 storageClassName:                    # 挂载数据盘类型
